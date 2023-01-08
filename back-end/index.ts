@@ -1,6 +1,8 @@
 import express from "express";
 import user from "./routers/user-roles/user";
 import employee from "./routers/user-roles/employee";
+import team from "./routers/user-roles/team";
+import role from "./routers/user-roles/role";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
@@ -24,4 +26,6 @@ if (MONGO_URL)
     });
 app.use(bodyParser.json());
 app.use("/api/users", user);
-app.use("/api/employee", employee);
+app.use("/api/employees", employee);
+app.use("/api/teams", team);
+app.use("/api/roles", role);
