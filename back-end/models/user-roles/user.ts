@@ -1,4 +1,3 @@
-import express from "express";
 import mongoose from "mongoose";
 
 let userSchema = new mongoose.Schema({
@@ -13,8 +12,5 @@ let userSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
-let userModel = mongoose.model("user", userSchema);
-
-let app: express = express();
-let route = app.router();
+let user = mongoose.model("user", userSchema);
+export default user;
