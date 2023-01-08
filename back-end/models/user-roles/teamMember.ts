@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import employeeModel from "./employee";
 
 let teamMemberSchema = new mongoose.Schema({
   teamId: {

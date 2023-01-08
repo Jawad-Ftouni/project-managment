@@ -1,7 +1,9 @@
 import express from "express";
 import user from "./routers/user-roles/user";
+import employee from "./routers/user-roles/employee";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 dotenv.config();
 
 let app = express();
@@ -20,5 +22,6 @@ if (MONGO_URL)
     .catch((err) => {
       console.log(err);
     });
-
-app.use("/users/adduser", user);
+app.use(bodyParser.json());
+app.use("/api/users", user);
+app.use("/api/employee", employee);

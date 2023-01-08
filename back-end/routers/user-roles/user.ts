@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import { Error } from "mongoose";
 import user from "../../models/user-roles/user";
 let router = express.Router();
 
@@ -15,13 +14,15 @@ router.post("/adduser", async (req: Request, res: Response) => {
     });
 
     let result = await userAdded.save();
-    res.send("user added");
+    console.log(result);
+    if (result) res.send("user added");
+    res.send("user not added");
   } catch (e) {
-    console.log(e);
+    console.log("cant add user" + e);
   }
 });
 
-router.get("/getusers", async (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     let users = await user.find();
     if (users) res.send(users);
